@@ -29,3 +29,7 @@ cmd: yarn global add babel-cli@6.24.1
 	 babel --help
 	 yarn init or npm init
 	 yarn add babel-preset-react
+
+## Use babel to control jsx
+cmd: babel src/app.js --out-file=public/scripts/app.js --present=env,react --watch
+*Two file will change at the meantime*

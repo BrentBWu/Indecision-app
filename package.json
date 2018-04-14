@@ -1,0 +1,23 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "description": "react-practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrentBWu/Indecision-app.git"
+  },
+  "author": "BrentBWu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrentBWu/Indecision-app/issues"
+  },
+  "homepage": "https://github.com/BrentBWu/Indecision-app#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1"
+  }
+}

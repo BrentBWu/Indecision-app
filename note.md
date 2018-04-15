@@ -33,3 +33,14 @@ cmd: yarn global add babel-cli@6.24.1
 ## Use babel to control jsx
 cmd: babel src/app.js --out-file=public/scripts/app.js --present=env,react --watch
 *Two file will change at the meantime*
+
+~~~JS
+// JSX - JavaScript XML
+var template = (
+<div>
+    <h1>This is JSX language</h1>
+    <p>info extra</p>
+</div>
+);
+~~~
+

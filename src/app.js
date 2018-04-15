@@ -1,18 +1,21 @@
 console.log('App.js is running');
 
 // JSX - JavaScript XML
-var template = (
-<div>
-    <h1>This is JSX language</h1>
-    <p>info extra</p>
-    <ol>
-        <li>Bowen Wu</li>
-        <li>Item two</li>
-        <li>Item three</li>
-    </ol>
-</div>
+
+// Creat a templateTwo var JSX expression
+// div
+// h1 -> Andrew Mead
+// P -> Age: 26
+// P -> Location: Auckland
+// Reader templateTwp instead of template
+var templateTwo = (
+    <div>
+        <h1>Bowen Wu</h1>
+        <p>Age: 25</p>
+        <p>Location: Auckland</p>
+    </div>
 );
 
-var appRoot = document.getElementById('app');
+var appRoot = document.getElementById("app");
 
-ReactDOM.render(template,appRoot);
+ReactDOM.render(templateTwo,appRoot);

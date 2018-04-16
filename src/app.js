@@ -22,6 +22,27 @@ var user = {
     // location: 'Auckland'
 };
 
+// only render the subtitle {and p tag} if subtitle exist - logical and operator
+// render new p tag - if options.length > 0 "Here are your options" "No options"
+
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
+}
+
+var template = (
+    <div>
+        <h1>{app.title}</h1>
+        {app.subtitle && <p>{app.subtitle}</p>}
+        <p>{app.options.length > 0 ? 'Here are your options ' : 'No options' }</p>
+        <ol>
+            <li>Item one</li>
+            <li>Item two</li>
+        </ol>
+    </div>
+);
+
 function getLocation(location) {
     if (location) {
         return <p>location: {location}</p>;
@@ -39,4 +60,4 @@ var templateTwo = (
 
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo,appRoot);
+ReactDOM.render(template,appRoot);

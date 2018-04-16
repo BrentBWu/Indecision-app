@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 console.log('App.js is running');
 
@@ -10,23 +10,45 @@ console.log('App.js is running');
 // P -> Age: 26
 // P -> Location: Auckland
 // Reader templateTwp instead of template
+
+// create app object title/subtitle
+// use title/subtitle in the template
+// render template
+
+// if statement
+// ternary operators
+// logical and operator
+var user = {
+    name: 'Brent',
+    age: 18,
+    location: 'Auckland'
+};
+
+function getLocation(location) {
+    if (location) {
+        return location;
+    } else return 'Unknown';
+}
+
 var templateTwo = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-        "h1",
+        'h1',
         null,
-        "Bowen Wu"
+        user.name
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "Age: 25"
+        'Age: ',
+        user.age
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "Location: Auckland"
+        'Location: ',
+        getLocation(user.location)
     )
 );
 

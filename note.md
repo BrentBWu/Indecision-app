@@ -2,6 +2,7 @@
 
 cmd: yarn global add live-server
 	 npm install -g live-server
+   live-server public
 
 ## JSX - JavaScript XML
 
@@ -42,5 +43,28 @@ var template = (
     <p>info extra</p>
 </div>
 );
+~~~
+
+## conditional javascript methods
+~~~js
+var user = {
+    name: 'Brent',
+    age: 18,
+    // location: 'Auckland'
+};
+
+function getLocation(location) {
+    if (location) {
+        return <p>location: {location}</p>;
+    }
+    else return 'Unknown';
+}
+~~~
+
+## ternary operator
+~~~js
+  <h1>{user.name ? user.name : 'Anonymous'}</h1>
+  {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
+
 ~~~
 

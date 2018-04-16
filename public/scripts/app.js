@@ -19,14 +19,19 @@ console.log('App.js is running');
 // ternary operators
 // logical and operator
 var user = {
-    name: 'Brent',
-    age: 18,
-    location: 'Auckland'
+    // name: 'Brent',
+    age: 18
+    // location: 'Auckland'
 };
 
 function getLocation(location) {
     if (location) {
-        return location;
+        return React.createElement(
+            'p',
+            null,
+            'location: ',
+            location
+        );
     } else return 'Unknown';
 }
 
@@ -36,20 +41,15 @@ var templateTwo = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age >= 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        getLocation(user.location)
-    )
+    getLocation(user.location)
 );
 
 var appRoot = document.getElementById("app");

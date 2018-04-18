@@ -1,34 +1,46 @@
 'use strict';
 
-// const square = function(x) {
-//     return x * x;
-// };
+// arguments obkect - on longer bound with arrow function
 
-// console.log(square(3));
-
-// // const squareArrow = (x) => {
-// //     return x * x;
-// // };
-
-// // arrow function part
-// const squareArrow = (x) => x * x;
-
-// console.log(squareArrow(4));
-
-// Challenge - Use arrow functions
-// getFirstname('Mike Smith) -> 'Mike'
-// create regular arrow function
-// create arrow function using shorthand syntax
-var fullName = 'Mike Smith';
-
-var getFirstname = function getFirstname(fullName) {
-    var firstName = fullName.split(' ')[0];
-    return firstName;
+var add = function add(a, b) {
+        //    console.log(arguments);
+        return a + b;
 };
+console.log(add(55, 1, 1000));
 
-var getFirstname2 = function getFirstname2(fullName) {
-    return fullName.split(' ')[0];
+// this keyword - no longer bound
+// user object: two name and arrary cites
+var user = {
+        name: 'Andrew',
+        cities: ['Auckland', 'New York', 'Dublin'],
+        printPlacesLived: function printPlacesLived() {
+                var _this = this;
+
+                // console.log(this.name);
+                // console.log(this.cities);
+                // const that = this;
+
+                // this.name is not accessable here, unless you use arrow function
+
+                // version 1
+                // const cityMessages = this.cities.map((city)=> {
+                //     return city;
+                // });
+                // return cityMessages;
+
+                // version 2
+                // return this.cities.map((city)=> {
+                //     return city;
+                // });
+
+                // version 3
+                return this.cities.map(function (city) {
+                        return _this.name + ' has lived in ' + city;
+                });
+
+                // this.cities.forEach((city) => {
+                //     console.log(this.name + ' has lived in ' + city);
+                // });
+        }
 };
-
-console.log(getFirstname(fullName));
-console.log(getFirstname2(fullName));
+console.log(user.printPlacesLived());

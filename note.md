@@ -70,3 +70,45 @@ function getLocation(location) {
 ## JSX let const vs var
 You can check pdf resources
 Use const with high priority, use let only when you want to declare sth that you want to resign.
+
+## es6 arrow function
+This function might be equal to its parent level
+like
+
+~~~js
+const user = {
+    name: 'Andrew',
+    cities: ['Auckland','New York','Dublin'],
+    printPlacesLived: function () {
+        // console.log(this.name);
+        // console.log(this.cities);
+        // const that = this;
+
+        // this.name is not accessable here, unless you use arrow function
+        this.cities.forEach((city) => {
+            console.log(this.name + ' has lived in ' + city);
+        });
+    }
+};
+~~~
+
+Actually we can modify it better
+
+~~~js
+const user = {
+    name: 'Andrew',
+    cities: ['Auckland','New York','Dublin'],
+    printPlacesLived() {
+        // console.log(this.name);
+        // console.log(this.cities);
+        // const that = this;
+
+        // this.name is not accessable here, unless you use arrow function
+        this.cities.forEach((city) => {
+            console.log(this.name + ' has lived in ' + city);
+        });
+    }
+};
+~~~
+
+**We don't need to use 'function' again.**

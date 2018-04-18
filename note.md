@@ -65,6 +65,8 @@ function getLocation(location) {
 ~~~js
   <h1>{user.name ? user.name : 'Anonymous'}</h1>
   {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
-
 ~~~
 
+## JSX let const vs var
+You can check pdf resources
+Use const with high priority, use let only when you want to declare sth that you want to resign.

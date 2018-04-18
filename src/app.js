@@ -16,7 +16,7 @@ console.log('App.js is running');
 // if statement
 // ternary operators
 // logical and operator
-var user = {
+const user = {
     // name: 'Brent',
     age: 18,
     // location: 'Auckland'
@@ -25,13 +25,13 @@ var user = {
 // only render the subtitle {and p tag} if subtitle exist - logical and operator
 // render new p tag - if options.length > 0 "Here are your options" "No options"
 
-var app = {
+const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
     options: ['One', 'Two']
 }
 
-var template = (
+const template = (
     <div>
         <h1>{app.title}</h1>
         {app.subtitle && <p>{app.subtitle}</p>}
@@ -50,7 +50,7 @@ function getLocation(location) {
     else return 'Unknown';
 }
 
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>{user.name ? user.name : 'Anonymous'}</h1>
         {user.age && user.age >= 18 && <p>Age: {user.age}</p>}
@@ -58,6 +58,6 @@ var templateTwo = (
     </div>
 );
 
-var appRoot = document.getElementById("app");
+const appRoot = document.getElementById("app");
 
 ReactDOM.render(template,appRoot);

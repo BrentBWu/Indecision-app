@@ -1,22 +1,17 @@
-'use strict';
+"use strict";
 
-var nameVar = 'Andrew';
-nameVar = 'Mike';
-console.log('nameVar', nameVar);
+var square = function square(x) {
+    return x * x;
+};
 
-var nameLet = 'Jen';
-nameLet = 'Julie';
-console.log('nameLet', nameLet);
+console.log(square(3));
 
-// const define something you can't modify or rewrite or resign
-var nameConst = 'Frank';
-console.log('nameConst', nameConst);
+// const squareArrow = (x) => {
+//     return x * x;
+// };
 
-// Block scoping
+var squareArrow = function squareArrow(x) {
+    return x * x;
+};
 
-var fullName = 'Jen Mead';
-
-if (fullName) {
-    var firstName = fullName.split(' ')[0];
-    console.log(firstName);
-}
+console.log(squareArrow(4));

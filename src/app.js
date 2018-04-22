@@ -57,7 +57,7 @@ const addOne = () => {
 
 const minusOne = () => {
     console.log('minusOne');
-}
+};
 
 const reset = () => {
     console.log('reset');

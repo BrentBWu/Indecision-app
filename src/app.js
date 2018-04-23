@@ -74,7 +74,7 @@ const render = () => {
             <h1>{app.title}</h1>
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? 'Here are your options ' : 'No options' }</p>
-            <p>{app.options.length}</p>
+            <p>{/*app.options.length*/}</p>
             <ol>
                 {
             /*  numbers.map((number) => {

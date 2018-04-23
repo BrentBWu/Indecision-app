@@ -43,7 +43,7 @@ const onFormSubmit = (e) => {
         e.target.elements.option.value = '';
     }
     render();
-    console.log('form submitted');
+    // console.log('form submitted');
 };
 
 

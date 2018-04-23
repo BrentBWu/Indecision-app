@@ -59,9 +59,17 @@ function getLocation(location) {
 
 var appRoot = document.getElementById("app");
 
+// create 'Remove All' button above list
+// on click -> wipe the array -> rerender
+
 // create render function that renders the new jsx
 // call it right away
 // call it after options array added to
+var onRemoveAll = function onRemoveAll() {
+    app.options.length--;
+    render();
+};
+
 var render = function render() {
     var template = React.createElement(
         'div',
@@ -108,6 +116,11 @@ var render = function render() {
                 'button',
                 null,
                 'Add Option'
+            ),
+            React.createElement(
+                'button',
+                { onClick: onRemoveAll },
+                'Remove All'
             )
         )
     );

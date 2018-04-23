@@ -114,3 +114,5 @@ const user = {
 **We don't need to use 'function' again.**
 
 ## Questions: what is e.target.elements.option.value = ''; (app.js line 41)
+
+## Questions: what is app.options.push(option);

@@ -55,11 +55,17 @@ function getLocation(location) {
 
 const appRoot = document.getElementById("app");
 
-
+// create 'Remove All' button above list
+// on click -> wipe the array -> rerender
 
 // create render function that renders the new jsx
 // call it right away
 // call it after options array added to
+const onRemoveAll = () => {
+    app.options.length--;
+    render();
+};
+
 const render = () => {
     const template = (
         <div>
@@ -74,9 +80,10 @@ const render = () => {
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
                 <button>Add Option</button>
+                <button onClick={onRemoveAll}>Remove All</button>
             </form>
         </div>
-    );
+    ); 
 
     ReactDOM.render(template,appRoot);  
 };

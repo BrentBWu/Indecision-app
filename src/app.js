@@ -31,6 +31,8 @@ const app = {
     options: []
 };
 
+const numbers = [55, 101, 1000];
+
 const onFormSubmit = (e) => {
     e.preventDefault(); // stop refresh, put data inside client side
 
@@ -62,7 +64,7 @@ const appRoot = document.getElementById("app");
 // call it right away
 // call it after options array added to
 const onRemoveAll = () => {
-    app.options.length--;
+    app.options=[];
     render();
 };
 
@@ -74,8 +76,14 @@ const render = () => {
             <p>{app.options.length > 0 ? 'Here are your options ' : 'No options' }</p>
             <p>{app.options.length}</p>
             <ol>
-                <li>Item one</li>
-                <li>Item two</li>
+                {
+            /*  numbers.map((number) => {
+                    return <p key={number}>Number: {number}</p>;
+                }) */
+                app.options.map((e) => {
+                    return <li key={e}>Item: {e}</li>;
+                })
+                }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>

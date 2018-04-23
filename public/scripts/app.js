@@ -33,6 +33,8 @@ var app = {
     options: []
 };
 
+var numbers = [55, 101, 1000];
+
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault(); // stop refresh, put data inside client side
 
@@ -66,7 +68,7 @@ var appRoot = document.getElementById("app");
 // call it right away
 // call it after options array added to
 var onRemoveAll = function onRemoveAll() {
-    app.options.length--;
+    app.options = [];
     render();
 };
 
@@ -97,16 +99,18 @@ var render = function render() {
         React.createElement(
             'ol',
             null,
-            React.createElement(
-                'li',
-                null,
-                'Item one'
-            ),
-            React.createElement(
-                'li',
-                null,
-                'Item two'
-            )
+
+            /*  numbers.map((number) => {
+                    return <p key={number}>Number: {number}</p>;
+                }) */
+            app.options.map(function (e) {
+                return React.createElement(
+                    'li',
+                    { key: e },
+                    'Item: ',
+                    e
+                );
+            })
         ),
         React.createElement(
             'form',

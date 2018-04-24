@@ -1,138 +1,49 @@
-'use strict';
-
-console.log('App.js is running');
-
-// JSX - JavaScript XML
-
-// Creat a templateTwo var JSX expression
-// div
-// h1 -> Andrew Mead
-// P -> Age: 26
-// P -> Location: Auckland
-// Reader templateTwp instead of template
-
-// create app object title/subtitle
-// use title/subtitle in the template
-// render template
-
-// if statement
-// ternary operators
-// logical and operator
-// const user = {
-//     // name: 'Brent',
-//     age: 18,
-//     // location: 'Auckland'
-// };
-
-// only render the subtitle {and p tag} if subtitle exist - logical and operator
-// render new p tag - if options.length > 0 "Here are your options" "No options"
+"use strict";
 
 var app = {
-    title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer',
+    title: 'Visbility Toggle',
     options: []
 };
 
-// const numbers = [55, 101, 1000];
+var count = 0;
 
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault(); // stop refresh, put data inside client side
+// const addOe = () => {
+//     count++;
+//     render();
+// };
 
-    var option = e.target.elements.option.value; // point to the element that the state start
-
-    if (option) {
-        app.options.push(option);
-        e.target.elements.option.value = '';
+var showDetails = function showDetails() {
+    count++;
+    if (count % 2 !== 0) {
+        app.options = ["complete challenge"];
+    } else {
+        app.options = [];
     }
+    console.log(count);
+    console.log(app.options);
     render();
-    // console.log('form submitted');
 };
-
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'location: ',
-            location
-        );
-    } else return 'Unknown';
-}
 
 var appRoot = document.getElementById("app");
 
-// create 'Remove All' button above list
-// on click -> wipe the array -> rerender
-
-// create render function that renders the new jsx
-// call it right away
-// call it after options array added to
-var onRemoveAll = function onRemoveAll() {
-    app.options = [];
-    render();
-};
-
-var onMakeDecision = function onMakeDecision() {
-    var randomNum = Math.floor(Math.random() * app.options.length);
-    var option = app.options[randomNum];
-    alert(option);
-    console.log(randomNum);
-};
-
 var render = function render() {
     var template = React.createElement(
-        'div',
+        "div",
         null,
         React.createElement(
-            'h1',
+            "h1",
             null,
             app.title
         ),
-        app.subtitle && React.createElement(
-            'p',
+        React.createElement(
+            "button",
+            { onClick: showDetails },
+            "Show Details"
+        ),
+        React.createElement(
+            "p",
             null,
-            app.subtitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.options.length > 0 ? 'Here are your options ' : 'No options'
-        ),
-        React.createElement('p', null),
-        React.createElement(
-            'button',
-            { disabled: app.options.length == 0, onClick: onMakeDecision },
-            'What should I do?'
-        ),
-        React.createElement(
-            'ol',
-            null,
-
-            /*  numbers.map((number) => {
-                    return <p key={number}>Number: {number}</p>;
-                }) */
-            app.options.map(function (e) {
-                return React.createElement(
-                    'li',
-                    { key: e },
-                    e
-                );
-            })
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add Option'
-            ),
-            React.createElement(
-                'button',
-                { onClick: onRemoveAll },
-                'Remove All'
-            )
+            app.options
         )
     );
 

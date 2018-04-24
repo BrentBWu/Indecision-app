@@ -31,7 +31,7 @@ const app = {
     options: []
 };
 
-const numbers = [55, 101, 1000];
+// const numbers = [55, 101, 1000];
 
 const onFormSubmit = (e) => {
     e.preventDefault(); // stop refresh, put data inside client side
@@ -68,6 +68,13 @@ const onRemoveAll = () => {
     render();
 };
 
+const onMakeDecision = () => {
+    const randomNum =Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNum];
+    alert(option);
+    console.log(randomNum);
+};
+
 const render = () => {
     const template = (
         <div>
@@ -75,13 +82,14 @@ const render = () => {
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? 'Here are your options ' : 'No options' }</p>
             <p>{/*app.options.length*/}</p>
+            <button disabled={app.options.length==0} onClick={onMakeDecision}>What should I do?</button>
             <ol>
                 {
             /*  numbers.map((number) => {
                     return <p key={number}>Number: {number}</p>;
                 }) */
                 app.options.map((e) => {
-                    return <li key={e}>Item: {e}</li>;
+                    return <li key={e}>{e}</li>;
                 })
                 }
             </ol>

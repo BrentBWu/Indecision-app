@@ -33,7 +33,7 @@ var app = {
     options: []
 };
 
-var numbers = [55, 101, 1000];
+// const numbers = [55, 101, 1000];
 
 var onFormSubmit = function onFormSubmit(e) {
     e.preventDefault(); // stop refresh, put data inside client side
@@ -72,6 +72,13 @@ var onRemoveAll = function onRemoveAll() {
     render();
 };
 
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    alert(option);
+    console.log(randomNum);
+};
+
 var render = function render() {
     var template = React.createElement(
         'div',
@@ -93,6 +100,11 @@ var render = function render() {
         ),
         React.createElement('p', null),
         React.createElement(
+            'button',
+            { disabled: app.options.length == 0, onClick: onMakeDecision },
+            'What should I do?'
+        ),
+        React.createElement(
             'ol',
             null,
 
@@ -103,7 +115,6 @@ var render = function render() {
                 return React.createElement(
                     'li',
                     { key: e },
-                    'Item: ',
                     e
                 );
             })

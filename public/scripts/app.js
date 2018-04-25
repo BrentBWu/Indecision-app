@@ -5,24 +5,31 @@ var app = {
     options: []
 };
 
-var count = 0;
+// let count = 0;
+var visbility = true;
+
+var toggle = function toggle() {
+    visbility = !visbility;
+    render();
+};
 
 // const addOe = () => {
 //     count++;
 //     render();
 // };
 
-var showDetails = function showDetails() {
-    count++;
-    if (count % 2 !== 0) {
-        app.options = ["complete challenge"];
-    } else {
-        app.options = [];
-    }
-    console.log(count);
-    console.log(app.options);
-    render();
-};
+// const showDetails = () => {
+//     count++;
+//     if(count%2 !== 0) {
+//         app.options = ["complete challenge"];
+//     }
+//     else {
+//         app.options= [];
+//     }
+//     console.log(count);
+//     console.log(app.options);
+//     render();
+// };
 
 var appRoot = document.getElementById("app");
 
@@ -37,13 +44,14 @@ var render = function render() {
         ),
         React.createElement(
             "button",
-            { onClick: showDetails },
-            "Show Details"
+            { onClick: toggle },
+            visbility ? "Show Details" : "Hide Details"
         ),
+        React.createElement("p", null),
         React.createElement(
             "p",
             null,
-            app.options
+            !visbility && "complete challenge"
         )
     );
 

@@ -38,11 +38,9 @@ const render = () => {
             {/*<button onClick={showDetails}>Show Details</button>*/}
             <button onClick={toggle}>{visbility ? "Show Details" : "Hide Details"}</button>
             <p>{/*app.options*/}</p>
-            <p>
-                {
-                    !visbility && ("complete challenge")    
-                }
-            </p>
+                {!visbility &&(
+                    <p>complete challenge</p>    
+                )}
         </div>
     );
     

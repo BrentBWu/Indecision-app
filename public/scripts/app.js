@@ -48,10 +48,10 @@ var render = function render() {
             visbility ? "Show Details" : "Hide Details"
         ),
         React.createElement("p", null),
-        React.createElement(
+        !visbility && React.createElement(
             "p",
             null,
-            !visbility && "complete challenge"
+            "complete challenge"
         )
     );
 

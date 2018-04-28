@@ -1,61 +1,51 @@
-"use strict";
+'use strict';
 
-var app = {
-    title: 'Visbility Toggle',
-    options: []
-};
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// let count = 0;
-var visbility = true;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var toggle = function toggle() {
-    visbility = !visbility;
-    render();
-};
+// constructor to take name and age (default to 0)
+// getDescription - Andrew Mead is 26 year(s) old
 
-// const addOe = () => {
-//     count++;
-//     render();
-// };
+// Car
+// make
+// model
+// vin
+// getDescription
 
-// const showDetails = () => {
-//     count++;
-//     if(count%2 !== 0) {
-//         app.options = ["complete challenge"];
-//     }
-//     else {
-//         app.options= [];
-//     }
-//     console.log(count);
-//     console.log(app.options);
-//     render();
-// };
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '0';
 
-var appRoot = document.getElementById("app");
+        _classCallCheck(this, Person);
 
-var render = function render() {
-    var template = React.createElement(
-        "div",
-        null,
-        React.createElement(
-            "h1",
-            null,
-            app.title
-        ),
-        React.createElement(
-            "button",
-            { onClick: toggle },
-            visbility ? "Show Details" : "Hide Details"
-        ),
-        React.createElement("p", null),
-        !visbility && React.createElement(
-            "p",
-            null,
-            "complete challenge"
-        )
-    );
+        this.name = name;
+        this.age = age;
+    }
 
-    ReactDOM.render(template, appRoot);
-};
+    _createClass(Person, [{
+        key: 'getGretting',
+        value: function getGretting() {
+            // return this.name;
+            return 'Hi, I am ' + this.name;
+            // return 'Hi I am ${this.name}';
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old';
+        }
+    }]);
 
-render();
+    return Person;
+}();
+
+var me = new Person('Andrew Mead', '26');
+
+console.log(me.getGretting());
+console.log(me.getDescription());
+
+var other = new Person();
+console.log(other.getGretting());
+console.log(other.getDescription());

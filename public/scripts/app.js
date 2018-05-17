@@ -81,6 +81,11 @@ var Action = function (_React$Component3) {
     }
 
     _createClass(Action, [{
+        key: 'handlePick',
+        value: function handlePick() {
+            alert("asdasd");
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
@@ -88,7 +93,7 @@ var Action = function (_React$Component3) {
                 null,
                 React.createElement(
                     'button',
-                    null,
+                    { onClick: this.handlePick },
                     'What should I do ?'
                 )
             );
@@ -106,6 +111,10 @@ var Action = function (_React$Component3) {
 
 // Render new p tag for each option (set text, set key)
 
+// Add remove all button
+// Setup handleRemoveAll => alert some message
+// Setup onclick to fire the button
+
 
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
@@ -117,21 +126,24 @@ var Options = function (_React$Component4) {
     }
 
     _createClass(Options, [{
+        key: 'handleRemoveAll',
+        value: function handleRemoveAll() {
+            alert("Handle Remove All");
+        }
+    }, {
         key: 'render',
         value: function render() {
-            return (
-                /*             <div>
-                                <p>{this.props.options[0]}</p>
-                                <p>{this.props.options[1]}</p>
-                                <p>{this.props.options[2]}</p>
-                            </div> */
+            return React.createElement(
+                'div',
+                null,
                 React.createElement(
-                    'div',
-                    null,
-                    this.props.options.map(function (option) {
-                        return React.createElement(Option, { key: option, optionText: option });
-                    })
-                )
+                    'button',
+                    { onClick: this.handleRemoveAll },
+                    'RemoveAll'
+                ),
+                this.props.options.map(function (option) {
+                    return React.createElement(Option, { key: option, optionText: option });
+                })
             );
         }
     }]);
@@ -165,6 +177,10 @@ var Option = function (_React$Component5) {
     return Option;
 }(React.Component);
 
+// 1. Setup the form with text input and submit button
+// 2. Wire up onSubmit
+// 3. handleAddOption -> fetch the value type -> of value, then alert
+
 // AddOption -> AddOption component here
 
 
@@ -178,11 +194,31 @@ var AddOption = function (_React$Component6) {
     }
 
     _createClass(AddOption, [{
+        key: 'handleAddOption',
+        value: function handleAddOption(e) {
+            e.preventDefault();
+            var option = e.target.elements.option.value; // Go into target element
+
+            if (option) {
+                alert("find value");
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
             return React.createElement(
                 'div',
                 null,
+                React.createElement(
+                    'form',
+                    { onSubmit: this.handleAddOption },
+                    React.createElement('input', { type: 'text', name: 'option' }),
+                    React.createElement(
+                        'button',
+                        null,
+                        'submit'
+                    )
+                ),
                 React.createElement(
                     'button',
                     null,

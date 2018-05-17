@@ -30,10 +30,13 @@ class Header extends React.Component{
 }
 
 class Action extends React.Component {
+    handlePick() {
+        alert("asdasd");
+    }
     render() {
         return (
             <div>
-                <button>What should I do ?</button>
+                <button onClick={this.handlePick}>What should I do ?</button>
             </div>
         );
     }
@@ -46,15 +49,19 @@ class Action extends React.Component {
 // Options -> Options component here
 
 // Render new p tag for each option (set text, set key)
+
+// Add remove all button
+// Setup handleRemoveAll => alert some message
+// Setup onclick to fire the button
 class Options extends React.Component {
+    handleRemoveAll() {
+        alert("Handle Remove All");
+    }
+    
     render() {
         return (
-/*             <div>
-                <p>{this.props.options[0]}</p>
-                <p>{this.props.options[1]}</p>
-                <p>{this.props.options[2]}</p>
-            </div> */
             <div>
+                <button onClick={this.handleRemoveAll}>RemoveAll</button>
                 {
                     this.props.options.map((option) => <Option key={option} optionText={option}/>)
                 }
@@ -74,11 +81,27 @@ class Option extends React.Component {
     }
 }
 
+// 1. Setup the form with text input and submit button
+// 2. Wire up onSubmit
+// 3. handleAddOption -> fetch the value type -> of value, then alert
+
 // AddOption -> AddOption component here
 class AddOption extends React.Component {
+    handleAddOption(e) {
+        e.preventDefault();
+        const option = e.target.elements.option.value;// Go into target element
+
+        if (option) {
+          alert("find value");
+        }
+    }
     render() {
         return (
             <div>
+                <form onSubmit={this.handleAddOption}>
+                <input type="text" name="option"/>
+                <button>submit</button>
+                </form>
                 <button /*onClick={Add}*/>Add Option</button>
             </div>
         );

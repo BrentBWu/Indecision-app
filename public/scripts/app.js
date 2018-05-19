@@ -116,6 +116,15 @@ var Action = function (_React$Component3) {
 // Setup onclick to fire the button
 
 
+var obj = {
+    name: 'Vikram',
+    getName: function getName() {
+        return this.name;
+    }
+};
+
+console.log(obj.getName());
+
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
@@ -128,7 +137,8 @@ var Options = function (_React$Component4) {
     _createClass(Options, [{
         key: 'handleRemoveAll',
         value: function handleRemoveAll() {
-            alert("Handle Remove All");
+            // alert("Handle Remove All");
+            console.log(this.props.options);
         }
     }, {
         key: 'render',
@@ -197,8 +207,8 @@ var AddOption = function (_React$Component6) {
         key: 'handleAddOption',
         value: function handleAddOption(e) {
             e.preventDefault();
-            var option = e.target.elements.option.value; // Go into target element
-
+            var option = e.target.elements.option.value.trim(); // Go into target element
+            // use trim to remove the space
             if (option) {
                 alert("find value");
             }

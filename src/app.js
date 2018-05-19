@@ -53,9 +53,20 @@ class Action extends React.Component {
 // Add remove all button
 // Setup handleRemoveAll => alert some message
 // Setup onclick to fire the button
+const obj = {
+    name: 'Vikram',
+    getName() {
+        return this.name;
+    }
+};
+
+console.log(obj.getName());
+
+
 class Options extends React.Component {
     handleRemoveAll() {
-        alert("Handle Remove All");
+        // alert("Handle Remove All");
+        console.log(this.props.options);
     }
     
     render() {
@@ -89,8 +100,8 @@ class Option extends React.Component {
 class AddOption extends React.Component {
     handleAddOption(e) {
         e.preventDefault();
-        const option = e.target.elements.option.value;// Go into target element
-
+        const option = e.target.elements.option.value.trim();// Go into target element
+        // use trim to remove the space
         if (option) {
           alert("find value");
         }

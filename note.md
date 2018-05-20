@@ -118,3 +118,9 @@ const user = {
 ## Questions: what is e.target.elements.option.value = ''; (app.js line 41)
 
 ## Questions: what is app.options.push(option);
+
+## Prop
+
+
+## How to search for solutions
+google: mdn bind

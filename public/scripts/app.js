@@ -116,22 +116,17 @@ var Action = function (_React$Component3) {
 // Setup onclick to fire the button
 
 
-var obj = {
-    name: 'Vikram',
-    getName: function getName() {
-        return this.name;
-    }
-};
-
-console.log(obj.getName());
-
 var Options = function (_React$Component4) {
     _inherits(Options, _React$Component4);
 
-    function Options() {
+    function Options(props) {
         _classCallCheck(this, Options);
 
-        return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+        // run father's constructor
+        var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+        _this4.handleRemoveAll = _this4.handleRemoveAll.bind(_this4);
+        return _this4;
     }
 
     _createClass(Options, [{

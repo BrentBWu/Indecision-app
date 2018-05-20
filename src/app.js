@@ -53,17 +53,11 @@ class Action extends React.Component {
 // Add remove all button
 // Setup handleRemoveAll => alert some message
 // Setup onclick to fire the button
-const obj = {
-    name: 'Vikram',
-    getName() {
-        return this.name;
-    }
-};
-
-console.log(obj.getName());
-
-
 class Options extends React.Component {
+    constructor(props) {
+        super(props); // run father's constructor
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
     handleRemoveAll() {
         // alert("Handle Remove All");
         console.log(this.props.options);

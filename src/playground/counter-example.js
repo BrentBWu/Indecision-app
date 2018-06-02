@@ -1,11 +1,18 @@
 class Counter extends React.Component {
+    // if your function do require access to the state of your component, you need to bind them
+    constructor(props) {
+        super(props);
+        this.handleAddOne = this.handleAddOne.bind(this);
+        this.handleMinusOne = this.handleMinusOne.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+    }
     handleAddOne() {
         console.log('handleAddOne');
     }
 
     handleMinusOne() {
         console.log('handleMinusOne');
-    }
+    } 
 
     handleReset() {
         console.log('handleReset');

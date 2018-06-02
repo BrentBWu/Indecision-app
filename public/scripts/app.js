@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -8,133 +8,113 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_React$Component) {
-    _inherits(Counter, _React$Component);
+// VisibilityToggle - render, constructor, handleToggleVisibility
+// Visibility -> false
+var VisibilityToggle = function (_React$Component) {
+    _inherits(VisibilityToggle, _React$Component);
 
-    // if your function do require access to the state of your component, you need to bind them
-    function Counter(props) {
-        _classCallCheck(this, Counter);
+    function VisibilityToggle(props) {
+        _classCallCheck(this, VisibilityToggle);
 
-        var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (VisibilityToggle.__proto__ || Object.getPrototypeOf(VisibilityToggle)).call(this, props));
 
-        _this.handleAddOne = _this.handleAddOne.bind(_this);
-        _this.handleMinusOne = _this.handleMinusOne.bind(_this);
-        _this.handleReset = _this.handleReset.bind(_this);
+        _this.handleToggleVisibility = _this.handleToggleVisibility.bind(_this);
         _this.state = {
-            count: 0
+            visibility: false
         };
         return _this;
     }
 
-    _createClass(Counter, [{
-        key: 'handleAddOne',
-        value: function handleAddOne() {
-            // this.state.count ++;
-            // prevState: state before change
-            // setState only change specific value
+    _createClass(VisibilityToggle, [{
+        key: "handleToggleVisibility",
+        value: function handleToggleVisibility() {
             this.setState(function (prevState) {
+                // If you forget to bind, you cannot access to your state
                 return {
-                    count: prevState.count + 1
+                    // Visibility: !preState.Visibility
+                    visibility: !prevState.visibility
                 };
             });
-            // console.log(this.state);
         }
     }, {
-        key: 'handleMinusOne',
-        value: function handleMinusOne() {
-            this.setState(function (prevState) {
-                return {
-                    count: prevState.count - 1
-                };
-            });
-            // console.log('handleMinusOne');
-        }
-    }, {
-        key: 'handleReset',
-        value: function handleReset() {
-            this.setState(function () {
-                return {
-                    count: 0
-                };
-            });
-            // console.log('handleReset');
-        }
-    }, {
-        key: 'render',
+        key: "render",
         value: function render() {
-            return React.createElement(
-                'div',
-                null,
+            return (// Question: why we use '(' here instead of '{'
                 React.createElement(
-                    'h1',
+                    "div",
                     null,
-                    'Count:',
-                    this.state.count
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleAddOne },
-                    '+1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleMinusOne },
-                    '-1'
-                ),
-                React.createElement(
-                    'button',
-                    { onClick: this.handleReset },
-                    'reset'
+                    React.createElement(
+                        "h1",
+                        null,
+                        "Visibility Toggle"
+                    ),
+                    React.createElement(
+                        "button",
+                        { onClick: this.handleToggleVisibility },
+                        this.state.visibility ? "HideDetails" : "ShowDetails"
+                    ),
+                    React.createElement(
+                        "p",
+                        null,
+                        this.state.visibility && "Important info"
+                    )
                 )
             );
         }
     }]);
 
-    return Counter;
+    return VisibilityToggle;
 }(React.Component);
 
-// Create three methods: handleAddOne, handleMinusOne, handleReset
-// Use console.oh to print method name
-// Wire up onClick & bind in the constructor
+ReactDOM.render(React.createElement(VisibilityToggle, null), document.getElementById('app'));
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
-
-// let count = 0;
-// const addOne = () => {
-//     count++;
-//     renderCounterApp();
+// const app = {
+//     title: 'Visbility Toggle',
+//     options: []
 // };
 
-// const minusOne = () => {
-//     count--;
-//     renderCounterApp();
+// // let count = 0;
+// let visbility = true;
+
+// const toggle = () => {
+//     visbility = !visbility;
+//     render();
 // };
 
-// const reset = () => {
-//     count = 0;
-//     renderCounterApp();
-// };
+// // const addOe = () => {
+// //     count++;
+// //     render();
+// // };
 
-
-// // Challenge
-// // Make button "-1" - setup minusOne function and register - log "minusOne"
-// // Make reset button "reset" - setup reset function - log "reset"
-
+// // const showDetails = () => {
+// //     count++;
+// //     if(count%2 !== 0) {
+// //         app.options = ["complete challenge"];
+// //     }
+// //     else {
+// //         app.options= [];
+// //     }
+// //     console.log(count);
+// //     console.log(app.options);
+// //     render();
+// // };
 
 // const appRoot = document.getElementById("app");
 
-
-// const renderCounterApp = () => {
-//     const templateTwo = (
+// const render = () => {
+//     const template = (
 //         <div>
-//             <h1>Count: {count}</h1>
-//             <button onClick={addOne}>+1</button>
-//             <button onClick={minusOne}>-1</button>
-//             <button onClick={reset}>reset</button>
+//             <h1>{app.title}</h1>
+//             {/*<button onClick={showDetails}>Show Details</button>*/}
+//             <button onClick={toggle}>{visbility ? "Show Details" : "Hide Details"}</button>
+//             <p>{/*app.options*/}</p>
+//                 {!visbility &&(
+//                     <p>complete challenge</p>    
+//                 )}
 //         </div>
 //     );
 
-//     ReactDOM.render(templateTwo,appRoot);  
+//     ReactDOM.render(template,appRoot);
 // };
 
-// renderCounterApp();
+// render();

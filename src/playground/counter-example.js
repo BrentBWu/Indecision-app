@@ -36,6 +36,11 @@ class Counter extends React.Component {
                 count: 0
             };
         });
+        // this.setState((prevState) => {
+        //     return {
+        //         count: prevState.count + 1
+        //     };
+        // });
         // console.log('handleReset');
     }
 

@@ -1,8 +1,14 @@
+// Grab the add function from the add.js file in the utils folder
+// Grab React from the react npm module
+// add(2,4)
+
+
 class IndecisionApp extends React.Component {
     constructor(props) {
         super(props);
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
         this.handlePick = this.handlePick.bind(this);
+        this.handleAddOption = this.handleAddOption.bind(this);
         this.state = {
              options : ['Thing one','Thing two','Thing three']
         };
@@ -20,6 +26,19 @@ class IndecisionApp extends React.Component {
             let option = this.state.options[randomNum];
             alert(option);
             
+        });
+    }
+    handleAddOption(option) {
+        if (!option) {
+            return 'Enter valid value to add them';
+        }   else if(this.state.options.indexOf(option) > -1) {
+            return 'This option already exists';
+        }   
+        this.setState((preState) => {
+            // preState.options.push(option);
+            return {
+                options: preState.options.concat([option]) // what is concat; merge the array value
+            };
         });
     }
     // handleDeleteOptions
@@ -40,7 +59,9 @@ class IndecisionApp extends React.Component {
                     options={this.state.options}
                     handleDeleteOptions={this.handleDeleteOptions} // through props rerender in child
                 />
-                <AddOption />
+                <AddOption 
+                    handleAddOption={this.handleAddOption}
+                />
             </div>
         );
     }
@@ -128,17 +149,31 @@ class Option extends React.Component {
 
 // AddOption -> AddOption component here
 class AddOption extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleAddOption = this.handleAddOption.bind(this);
+        this.state = {
+            error: undefined
+        };
+    }
     handleAddOption(e) {
         e.preventDefault();
         const option = e.target.elements.option.value.trim();// Go into target element
         // use trim to remove the space
+        const error = this.props.handleAddOption(option);
         if (option) {
-          alert("find value");
+            this.props.handleAddOption(option);
         }
+        this.setState(() => {
+            return {
+                error // equal to error: error
+            }
+        });
     }
     render() {
         return (
             <div>
+                {this.state.error && <p>{this.state.error}</p>}
                 <form onSubmit={this.handleAddOption}>
                 <input type="text" name="option"/>
                 <button>submit</button>

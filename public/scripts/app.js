@@ -8,6 +8,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+// Grab the add function from the add.js file in the utils folder
+// Grab React from the react npm module
+// add(2,4)
+
+
 var IndecisionApp = function (_React$Component) {
     _inherits(IndecisionApp, _React$Component);
 
@@ -18,6 +23,7 @@ var IndecisionApp = function (_React$Component) {
 
         _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
         _this.handlePick = _this.handlePick.bind(_this);
+        _this.handleAddOption = _this.handleAddOption.bind(_this);
         _this.state = {
             options: ['Thing one', 'Thing two', 'Thing three']
         };
@@ -44,6 +50,21 @@ var IndecisionApp = function (_React$Component) {
                 alert(option);
             });
         }
+    }, {
+        key: 'handleAddOption',
+        value: function handleAddOption(option) {
+            if (!option) {
+                return 'Enter valid value to add them';
+            } else if (this.state.options.indexOf(option) > -1) {
+                return 'This option already exists';
+            }
+            this.setState(function (preState) {
+                // preState.options.push(option);
+                return {
+                    options: preState.options.concat([option]) // what is concat; merge the array value
+                };
+            });
+        }
         // handleDeleteOptions
         // handlePick - pass down to Action and setup onClick - bind here
         // randomly pick an option and alert it
@@ -66,7 +87,9 @@ var IndecisionApp = function (_React$Component) {
                     options: this.state.options,
                     handleDeleteOptions: this.handleDeleteOptions // through props rerender in child
                 }),
-                React.createElement(AddOption, null)
+                React.createElement(AddOption, {
+                    handleAddOption: this.handleAddOption
+                })
             );
         }
     }]);
@@ -230,10 +253,16 @@ var Option = function (_React$Component5) {
 var AddOption = function (_React$Component6) {
     _inherits(AddOption, _React$Component6);
 
-    function AddOption() {
+    function AddOption(props) {
         _classCallCheck(this, AddOption);
 
-        return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+        var _this7 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+        _this7.handleAddOption = _this7.handleAddOption.bind(_this7);
+        _this7.state = {
+            error: undefined
+        };
+        return _this7;
     }
 
     _createClass(AddOption, [{
@@ -242,9 +271,15 @@ var AddOption = function (_React$Component6) {
             e.preventDefault();
             var option = e.target.elements.option.value.trim(); // Go into target element
             // use trim to remove the space
+            var error = this.props.handleAddOption(option);
             if (option) {
-                alert("find value");
+                this.props.handleAddOption(option);
             }
+            this.setState(function () {
+                return {
+                    error: error // equal to error: error
+                };
+            });
         }
     }, {
         key: 'render',
@@ -252,6 +287,11 @@ var AddOption = function (_React$Component6) {
             return React.createElement(
                 'div',
                 null,
+                this.state.error && React.createElement(
+                    'p',
+                    null,
+                    this.state.error
+                ),
                 React.createElement(
                     'form',
                     { onSubmit: this.handleAddOption },
